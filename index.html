@@ -1,1 +1,42 @@
-# interestingWebsite
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Story Generator</title>
+</head>
+<body>
+    <h1>Emoji Story Generator</h1>
+    <label for="storyInput">Enter your story:</label>
+    <textarea id="storyInput" rows="4" cols="50"></textarea>
+    <br>
+    <button onclick="generateEmojiStory()">Generate Emoji Story</button>
+    <p id="emojiStory"></p>
+
+    <script>
+        function generateEmojiStory() {
+            const storyInput = document.getElementById('storyInput').value;
+            const emojiStoryElement = document.getElementById('emojiStory');
+
+            // Check if the input is not empty
+            if (storyInput.trim() === '') {
+                emojiStoryElement.innerText = 'Please enter a story.';
+                return;
+            }
+
+            // Fetch emojis based on the story input from the Emojipedia API
+            fetch(`https://emojipedia.org/api/v1/search/?q=${encodeURIComponent(storyInput)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const emojis = data.map(entry => entry.emoji);
+                    const emojiStory = emojis.join(' ');
+                    emojiStoryElement.innerText = emojiStory;
+                })
+                .catch(error => {
+                    console.error('Error fetching emojis:', error);
+                    emojiStoryElement.innerText = 'An error occurred. Please try again.';
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,42 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emoji Story Generator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji Type</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Emoji Story Generator</h1>
-    <label for="storyInput">Enter your story:</label>
-    <textarea id="storyInput" rows="4" cols="50"></textarea>
-    <br>
-    <button onclick="generateEmojiStory()">Generate Emoji Story</button>
-    <p id="emojiStory"></p>
+  <h1>Emoji Type</h1>
+  <div id="emojiDisplay"></div>
+  <input type="text" id="inputField" placeholder="Type the emoji name...">
+  <p>Score: <span id="score">0</span></p>
+  <div id="timer">Timer: <span id="timerDisplay">60</span></div>
 
-    <script>
-        function generateEmojiStory() {
-            const storyInput = document.getElementById('storyInput').value;
-            const emojiStoryElement = document.getElementById('emojiStory');
-
-            // Check if the input is not empty
-            if (storyInput.trim() === '') {
-                emojiStoryElement.innerText = 'Please enter a story.';
-                return;
-            }
-
-            // Fetch emojis based on the story input from the Emojipedia API
-            fetch(`https://emojipedia.org/api/v1/search/?q=${encodeURIComponent(storyInput)}`)
-                .then(response => response.json())
-                .then(data => {
-                    const emojis = data.map(entry => entry.emoji);
-                    const emojiStory = emojis.join(' ');
-                    emojiStoryElement.innerText = emojiStory;
-                })
-                .catch(error => {
-                    console.error('Error fetching emojis:', error);
-                    emojiStoryElement.innerText = 'An error occurred. Please try again.';
-                });
-        }
-    </script>
+  <script src="script.js"></script>
 </body>
+
 </html>

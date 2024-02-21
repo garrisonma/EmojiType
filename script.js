@@ -1,3 +1,25 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDCCWtMFsDcdHXbL_95FZrmmZn9Ek-P3m0",
+  authDomain: "emoji-type.firebaseapp.com",
+  projectId: "emoji-type",
+  storageBucket: "emoji-type.appspot.com",
+  messagingSenderId: "196393954740",
+  appId: "1:196393954740:web:526019e8cfc16016abd6e1",
+  measurementId: "G-2XGB8T4M1W"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 let score = 0;
 let timerValue = 60;
 let timerInterval;

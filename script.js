@@ -35,7 +35,7 @@ async function displayRandomEmoji() {
 
 function updateTimer() {
   timerValue--;
-  document.getElementById('timerDisplay').innerText = timerValue + ' s';
+  document.getElementById('timerDisplay').innerText = timerValue + 's';
 
 
   if (timerValue === 0) {
@@ -50,7 +50,7 @@ document.getElementById('inputField').addEventListener('input', function(event) 
 
   if (userInput !== '' && userInput.toLowerCase() === currentName) { 
     score += 10;
-    document.getElementById('score').innerText = score + "points";
+    document.getElementById('score').innerText = score + " points";
     displayRandomEmoji(); 
     document.getElementById('inputField').value = ''; 
   }
